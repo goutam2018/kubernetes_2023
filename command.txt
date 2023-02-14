@@ -1,0 +1,13 @@
+
+kubectl get nodes -- to get the nodes
+
+kubectl get pods -- to get the pods
+
+kubectl get sv   -- to get the services
+
+kubectl describe pod <pod name>  -- go get the pod description
+
+
+
+
+
