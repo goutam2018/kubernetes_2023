@@ -1,0 +1,79 @@
+Minikube Downloads Steps"
+
+## Dependency => Oracle VM Virtualbox
+##To Setup Chocolaty
+##Open powershell as administrator and execute below command 
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+## If getting Error, Turn Off Your Anti Virus for a moment and try again.
+
+## Install Minikube with chocolaty
+## Close powershell and start again with admin
+
+choco install minikube kubernetes-cli -y
+
+
+##Execute to Setup Minikube cluster
+# minikube start --no-vtx-check
+
+=============================config file ===================
+
+gouta@Arnav_Sarkar MINGW64 ~/.kube
+$ cat config
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: C:\Users\gouta\.minikube\ca.crt
+    extensions:
+    - extension:
+        last-update: Tue, 14 Feb 2023 19:38:48 IST
+        provider: minikube.sigs.k8s.io
+        version: v1.29.0
+      name: cluster_info
+    server: https://192.168.59.104:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Tue, 14 Feb 2023 19:38:48 IST
+        provider: minikube.sigs.k8s.io
+        version: v1.29.0
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: C:\Users\gouta\.minikube\profiles\minikube\client.crt
+    client-key: C:\Users\gouta\.minikube\profiles\minikube\client.key
+
+gouta@Arnav_Sarkar MINGW64 ~/.kube
+
+#Display information about the Deployment:
+
+kubectl get deployments hello-world
+kubectl describe deployments hello-world
+
+#Display information about your ReplicaSet objects:
+
+kubectl get replicasets
+kubectl describe replicasets
+
+
+# To expose the deployments hello-world
+
+kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
+
+# Display information about the Service:
+kubectl get services my-service
+
+# To delete services
+kubectl delete services my-services
+
+# To delete namespace
+kubectl delete ns <namespaces>
