@@ -50,3 +50,17 @@ or use the following command:
 The output is similar to:
 
 deployment.apps/nginx-deployment image updated
+
+
+======================Replicaset CMDS ===============
+
+
+# kubectl create -f replicaset.yaml
+
+# kubectl get replicaset
+
+# kubectl delete replicaset myapp-replicaset
+
+# kubectl replace -f replicaset.yaml  # to increase the no of replicaset
+
+# kubectl scale --replicas=6  -f replicaset.yaml # t0 increase the replicaset
